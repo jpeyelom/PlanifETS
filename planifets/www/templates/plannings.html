@@ -1,0 +1,9 @@
+<ion-view view-title="Plannings">
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="planning in plannings" href="#/app/plannings/{{planning.id}}">
+        {{planning.title}}
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
