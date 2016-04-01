@@ -42,6 +42,16 @@ angular.module('planifETS', ['ionic', 'planifETS.controllers'])
     }
   })
 
+  .state('app.availability', {
+    url: '/availability',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/availability.html',
+        controller: 'AvailabilityCtrl'
+      }
+    }
+  })
+
   .state('app.plannings', {
     url: '/plannings',
     views: {
