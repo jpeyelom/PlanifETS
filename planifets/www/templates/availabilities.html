@@ -1,4 +1,4 @@
-<ion-view view-title="Availabilities">
+<ion-view view-title="Course Availabilities">
   <ion-content>
     <div class="list">
 
@@ -15,19 +15,11 @@
         <div class="input-label">
           Field of study
         </div>
-        <select>
-          <option selected> Automated manufacturing engineering</option>
-          <option>Construction engineering</option>
-          <option>Electrical engineering</option>
-          <option>Information technology engineering</option>
-          <option>Mechanical engineering</option>
-          <option>Operations and logistics engineering</option>
-          <option>Software engineering</option>
-        </select>
+        <select ng-model="selectedField.value" ng-options="item.title for item in fields"></select>
       </label>
 
       <label class="item">
-        <button class="button button-block button-dark icon-right ion-chevron-right">View availabilities</button>
+        <button class="button button-block button-dark icon-right ion-chevron-right" ng-click="viewAvailabilities()">View availabilities</button>
       </label>
 
     </div>
