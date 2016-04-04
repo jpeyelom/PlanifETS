@@ -1,5 +1,42 @@
 <ion-view view-title="Availabilities">
   <ion-content>
-
+    <div>
+      <div class="row row-top row-header">
+        <h5 class="availabilities-title">Title</h5>
+      </div>
+      <div class="row row-top">
+        <div class="col col-20 col-header-course">Course</div>
+        <div class="col col-header">W16</div>
+        <div class="col col-header">S16</div>
+        <div class="col col-header">A16</div>
+        <div class="col col-header">W17</div>
+        <div class="col col-header">S17</div>
+      </div>
+      <div class="row">
+        <div class="col col-20 col-availabilities-course">ING160</div>
+        <div class="col col-availabilities"> </div>
+        <div class="col col-availabilities">D</div>
+        <div class="col col-availabilities">DN</div>
+        <div class="col col-availabilities">N</div>
+        <div class="col col-availabilities">DN</div>
+      </div>
+      <div class="row">
+        <div class="col col-20 col-availabilities-course">ING150</div>
+        <div class="col col-availabilities">D</div>
+        <div class="col col-availabilities"> </div>
+        <div class="col col-availabilities">N</div>
+        <div class="col col-availabilities">DN</div>
+        <div class="col col-availabilities"> </div>
+      </div>
+      <div class="row">
+        <div class="col col-20 col-availabilities-info">D : Day<br>N : Night<br>DN : Day-Night</div>
+        <div class="col col-80 col-availabilities-info">* : Horaire particulier en mode accéléré<br> Qa : Assurance qualité<br> Ts : Technologies de la santé</div>
+      </div>
+    </div>
+    <div class="list">
+      <label class="item">
+        <button class="button button-block button-dark" ng-click="downloadPDF()">Download PDF</button>
+      </label>
+    </div>
   </ion-content>
 </ion-view>

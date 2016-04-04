@@ -1,1 +1,43 @@
-/* Empty. Add your own CSS if you like */
+.row-header {
+  text-align: center;
+}
+
+.availabilities-title {
+  font-weight: bold;
+  text-align: center;
+}
+
+.col-header-course {
+  text-align: center;
+  background-color:lightgrey;
+  font-weight: bold;
+  border: solid black 2px;
+  border-left-style: none;
+  border-right-style: none;
+}
+
+.col-header {
+  text-align: center;
+  background-color:lightgrey;
+  font-weight: bold;
+  border: solid black 2px;
+  border-right-style: none;
+  border-left-width: 1px;
+}
+
+.col-availabilities-course {
+  text-align: center;
+  border: solid black 1px;
+  border-right-style: none;
+  border-left-style: none;
+}
+
+.col-availabilities {
+  text-align: center;
+  border: solid black 1px;
+  border-right-style: none;
+}
+
+.col-availabilities-info {
+  font-size: x-small;
+}
