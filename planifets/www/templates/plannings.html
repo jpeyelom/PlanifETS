@@ -7,7 +7,7 @@
       <ion-item ng-repeat="planning in plannings" href="#/app/plannings/{{planning.id}}" class="item-remove-animate">
         {{planning.title}}
         <ion-option-button class="button-energized" ng-click="editItem(planning)">Edit</ion-option-button>
-        <ion-option-button class="button-assertive icon ion-trash-a" ng-click="onItemDelete(planning)"></ion-option-button>
+        <ion-option-button class="button-assertive icon ion-trash-a" ng-click="showConfirm(planning)"></ion-option-button>
         <ion-reorder-button class="ion-navicon"
                             on-reorder="moveItem(planning, $fromIndex, $toIndex)">
         </ion-reorder-button>
