@@ -2,15 +2,15 @@
   <ion-content>
     <div>
       <div class="row row-top row-header">
-        <h5 class="availabilities-title">Title</h5>
+        <h5 class="availabilities-title">{{programTitle}}</h5>
       </div>
       <div class="row row-top">
         <div class="col col-20 col-header-course">Course</div>
-        <div class="col col-header">W16</div>
-        <div class="col col-header">S16</div>
-        <div class="col col-header">A16</div>
-        <div class="col col-header">W17</div>
-        <div class="col col-header">S17</div>
+        <div class="col col-header">{{semesters[0].title}}</div>
+        <div class="col col-header">{{semesters[1].title}}</div>
+        <div class="col col-header">{{semesters[2].title}}</div>
+        <div class="col col-header">{{semesters[3].title}}</div>
+        <div class="col col-header">{{semesters[4].title}}</div>
       </div>
       <div class="row">
         <div class="col col-20 col-availabilities-course">ING160</div>
