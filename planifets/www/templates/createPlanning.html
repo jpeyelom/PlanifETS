@@ -1,0 +1,78 @@
+<<ion-modal-view> view-title="Create Planning">
+  <ion-header-bar>
+    <h1 class="title">{{navTitle}}</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="leaveCreatePlanningDialog()">Cancel</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <div class="list">
+      <label class="item item-input item-select">
+        <div class="input-label">
+          Select a semester
+        </div>
+        <select ng-model="selectedSemester.value"
+                ng-options="item.semester for item in semesters">
+        </select>
+      </label>
+      <div class="item item-custom">
+        <div class="span-custom">
+          <span class="input-label">Select a course</span>
+        </div>
+        <div class="wrapper-custom">
+          <div class="select-wrapper">
+            <label class="item-input-select-wrapper" ng-controller="PlanningCtrl">
+              <ion-search-select class="ion-item-select" title="Search a course"
+                                 key-property="id" value-property="title" options="allCourses.courses"
+                                 option-selected="allCourses.selectedCourse">
+                <label class="item item-input-inset" style="border:none;padding: 0px;cursor: pointer;">
+                  <div class="item-input-wrapper">
+                    <i class="icon ion-ios-search"></i>
+                    <input type="text" ng-model="allCourses.selectedCourse.title" placeholder="Search" disabled>
+                  </div>
+                </label>
+              </ion-search-select>
+            </label>
+          </div>
+          <div>
+            <button class="button button-small button-custom" ng-click="addCourse()">
+              <i class="icon ion-plus-round"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="item item-selected-course">
+        <div class="selected-course-span">
+          <span class="input-label">Selected courses for {{selectedSemester.value.semester}}</span>
+        </div>
+
+        <ion-toggle toggle-class="toggle-assertive"
+                    ng-model = "showDeletePlanning"
+                    ng-change="toggleDeletDialog()">
+          Edit
+        </ion-toggle>
+
+        <ion-list ng-controller="PlanningCtrl"
+                  show-delete="showDeletePlanning"
+                  show-reorder="showReorderCPlanning"
+                  can-swipe="listCanSwipePlanning" >
+          <ion-item ng-repeat="selectedCourses in tempPlanning.selectedCourses | orderBy:'-course'"
+                    class="item-remove-animate">
+            {{selectedCourses.course}}
+            <ion-delete-button class="ion-minus-circled"
+                               ng-click="onItemDelete(selectedCourses, 'dialog')">
+            </ion-delete-button></ion-item>
+        </ion-list>
+
+      </div>
+
+      <label class="item">
+        <button ng-if="action == 'add'" class="button button-block button-dark" ng-click="createPlanning()">Create</button>
+        <button ng-if="action == 'edit'" class="button button-block button-dark" ng-click="editPlanning()">Edit</button>
+      </label>
+
+    </div>
+  </ion-content>
+</<ion-modal-view>>
+
