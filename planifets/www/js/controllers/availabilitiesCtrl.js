@@ -1,15 +1,18 @@
-angular.module('planifETS.controllers').controller('AvailabilitiesCtrl', function($scope, $http, $ionicLoading, $location){
+angular.module('planifETS.controllers').controller('AvailabilitiesCtrl',
+  function($scope, $http, $ionicLoading, $location, TitleService){
 
   $scope.selectedField = {};
 
   $scope.viewAvailabilities = function() {
+    TitleService.setTitle($scope.selectedField.value.title)
+
     // Start showing the progress
     $scope.show($ionicLoading);
     // Call the service to get the data
 
     $scope.hide($ionicLoading);
 
-    console.log($scope.selectedField.value);
+    //console.log($scope.selectedField.value);
 
     $location.path('app/availability');
   };
