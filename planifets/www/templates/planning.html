@@ -1,5 +1,25 @@
-<ion-view view-title="Planning">
+<ion-view view-title="{{navTitle}}">
+  <ion-nav-title>
+    {{navTitle}}
+  </ion-nav-title>
   <ion-content>
-    <h1>Planning</h1>
+    <div class="list card">
+      <div class="item item-icon-right" style="font-weight: 600;">
+        Courses
+        <label class="icon" style="font-size: 16px; font-weight: 600;">Available</label>
+      </div>
+      <div class="item item-icon-right" ng-repeat="courses in planningCourses | orderBy:'-course'">
+        {{courses.course}}
+        <i ng-show="showValid" class="icon ion-checkmark-circled" style="color: limegreen;"></i>
+        <i ng-show="showInvalid" class="icon ion-close-circled" style="color: red;"></i>
+      </div>
+    </div>
+
+    <div class="list">
+      <label class="item">
+        <button class="button button-block button-dark"
+                ng-click="verifyAvailabilities()">Verify Availabilities</button>
+      </label>
+    </div>
   </ion-content>
 </ion-view>
