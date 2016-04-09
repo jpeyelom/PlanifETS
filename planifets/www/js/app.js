@@ -25,7 +25,7 @@ angular.module('planifETS', ['ionic', 'planifETS.controllers'])
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
-    .state('app', {
+  .state('app', {
     url: '/app',
     abstract: true,
     templateUrl: 'templates/menu.html',
@@ -68,6 +68,16 @@ angular.module('planifETS', ['ionic', 'planifETS.controllers'])
       'menuContent': {
         templateUrl: 'templates/planning.html',
         controller: 'PlanningCtrl'
+      }
+    }
+  })
+
+  .state('app.createPlanning', {
+    url: '/createPlanning',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/createPlanning.html',
+        controller: 'PlanningsCtrl'
       }
     }
   });
