@@ -1,4 +1,4 @@
-angular.module('planifETS.controllers').factory('PlanningService', function() {
+angular.module('planifETS.controllers').factory('PlanningService', [ function() {
 
   var planningList = null;
   var coursesList = null;
@@ -37,4 +37,4 @@ angular.module('planifETS.controllers').factory('PlanningService', function() {
     }
   };
   return listSrv;
-});
+}]);

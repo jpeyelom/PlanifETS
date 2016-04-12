@@ -1,4 +1,4 @@
-angular.module('planifETS.controllers').controller('PlanningCtrl',
+angular.module('planifETS.controllers').controller('PlanningCtrl',['$scope', 'TitleService', 'PlanningService',
   function($scope, TitleService, PlanningService){
 
   $scope.navTitle = null;
@@ -14,4 +14,4 @@ angular.module('planifETS.controllers').controller('PlanningCtrl',
   $scope.$on('$ionicView.beforeEnter', function() {
     $scope.navTitle = TitleService.getTitle();
   });
-});
+}]);

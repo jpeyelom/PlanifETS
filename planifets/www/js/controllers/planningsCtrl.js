@@ -1,4 +1,6 @@
 angular.module('planifETS.controllers').controller('PlanningsCtrl',
+  ['$scope', '$ionicListDelegate', '$ionicPopup', '$location',
+    'TitleService', '$ionicModal', 'CourseService', 'PlanningService',
   function($scope, $ionicListDelegate, $ionicPopup, $location, TitleService,
            $ionicModal, CourseService, PlanningService){
 
@@ -317,4 +319,4 @@ angular.module('planifETS.controllers').controller('PlanningsCtrl',
     $scope.allCourses.selectedCourse = null;
     $scope.selectedSemester.value = $scope.semesters[0];
   });
-});
+}]);

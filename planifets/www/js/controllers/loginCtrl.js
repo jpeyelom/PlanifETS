@@ -1,4 +1,5 @@
-angular.module('planifETS.controllers').controller('LoginCtrl', function($scope, $ionicModal, $timeout){
+angular.module('planifETS.controllers').controller('LoginCtrl',['$scope', '$ionicModal', '$timeout',
+  function($scope, $ionicModal, $timeout){
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -37,4 +38,4 @@ angular.module('planifETS.controllers').controller('LoginCtrl', function($scope,
       $scope.closeLogin();
     }, 1000);
   };
-});
+}]);

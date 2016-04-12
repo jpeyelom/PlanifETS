@@ -1,4 +1,5 @@
 angular.module('planifETS.controllers').controller('AvailabilitiesCtrl',
+  ['$scope', '$http', '$ionicLoading', '$location', 'TitleService',
   function($scope, $http, $ionicLoading, $location, TitleService){
 
   $scope.selectedField = {};
@@ -40,4 +41,4 @@ angular.module('planifETS.controllers').controller('AvailabilitiesCtrl',
     $ionicLoading.hide();
   };
 
-});
+}]);

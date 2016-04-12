@@ -1,4 +1,4 @@
-angular.module('planifETS.controllers').factory('TitleService', function() {
+angular.module('planifETS.controllers').factory('TitleService',[function() {
 
   var pageTitle = null;
 
@@ -14,4 +14,4 @@ angular.module('planifETS.controllers').factory('TitleService', function() {
     getTitle : getTitle,
     setTitle : setTitle
   };
-})
+}])

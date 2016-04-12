@@ -1,4 +1,5 @@
-angular.module('planifETS.controllers').controller('AvailabilityCtrl', function($scope, TitleService){
+angular.module('planifETS.controllers').controller('AvailabilityCtrl',['$scope', 'TitleService',
+  function($scope, TitleService){
 
   $scope.programTitle = null;
 
@@ -25,4 +26,4 @@ angular.module('planifETS.controllers').controller('AvailabilityCtrl', function(
     $scope.programTitle = TitleService.getTitle();
   });
 
-});
+}]);

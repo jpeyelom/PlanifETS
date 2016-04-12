@@ -1,4 +1,5 @@
-angular.module('planifETS.controllers').directive('ionSearchSelect', function ($ionicModal, $ionicGesture, CourseService) {
+angular.module('planifETS.controllers').directive('ionSearchSelect',['$ionicModal', '$ionicGesture', 'CourseService',
+  function ($ionicModal, $ionicGesture, CourseService) {
   return {
     restrict: 'E',
     scope: {
@@ -72,4 +73,4 @@ angular.module('planifETS.controllers').directive('ionSearchSelect', function ($
       };
     }
   };
-});
+}]);
