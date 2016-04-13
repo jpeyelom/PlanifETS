@@ -2,7 +2,11 @@ angular.module('planifETS.controllers').factory('AvailabilityService', [function
 
   var allAvailabilities = [];
   var filteredAvailabilities = [];
-
+  var availabilityValue = [
+    {value: 'D', id: 1},
+    {value: 'N', id: 2},
+    {value: 'DN', id: 3}
+  ];
 
   var getAllAvailabilities = function() {
     return allAvailabilities;
@@ -24,9 +28,23 @@ angular.module('planifETS.controllers').factory('AvailabilityService', [function
     return filteredAvailabilities;
   };
 
+  var getAvailabilitiesById = function(id) {
+    var availability = null;
+
+    for(var i = 0; i < availabilityValue.length; i++) {
+      if(id == availabilityValue[i].id) {
+        availability = availabilityValue[i].value;
+        break;
+      }
+    }
+
+    return availability;
+  };
+
   return {
     getAllAvailabilities : getAllAvailabilities,
     setAllAvailabilities : setAllAvailabilities,
-    filterCourseAvailabilities : filterCourseAvailabilities
+    filterCourseAvailabilities : filterCourseAvailabilities,
+    getAvailabilitiesById : getAvailabilitiesById
   };
 }])
