@@ -1,8 +1,8 @@
 angular.module('planifETS.controllers').controller('PlanningsCtrl',
   ['$scope', '$ionicListDelegate', '$ionicPopup', '$location',
-    'TitleService', '$ionicModal', 'CourseService', 'PlanningService',
+    'TitleService', '$ionicModal', 'CourseService', 'PlanningService', 'SemesterService',
   function($scope, $ionicListDelegate, $ionicPopup, $location, TitleService,
-           $ionicModal, CourseService, PlanningService){
+           $ionicModal, CourseService, PlanningService, SemesterService){
 
   $scope.listCanSwipe = true;
   $scope.showDelete = false;
@@ -12,14 +12,7 @@ angular.module('planifETS.controllers').controller('PlanningsCtrl',
   $scope.showReorderPlanning = false;
   $scope.listCanSwipePlanning = false;
   $scope.selectedSemester = {};
-
-  $scope.semesters = [
-    { semester: 'W16', id: 1 },
-    { semester: 'S16', id: 2 },
-    { semester: 'A16', id: 3 },
-    { semester: 'W17', id: 4 },
-    { semester: 'S17', id: 5 }
-  ];
+  $scope.semesters = [];
 
   $scope.tempPlanning = {
     selectedCourses: []
@@ -27,6 +20,10 @@ angular.module('planifETS.controllers').controller('PlanningsCtrl',
 
   $scope.plannings = {};
   $scope.plannings.semesterPlanning = PlanningService.getPlanningList();
+
+  // Setting the default value for the selector
+  $scope.selectedSemester.value = null;
+  $scope.filterBySemester = null;
 
   // $scope.plannings = {
   //   semesterPlanning : [
@@ -66,29 +63,9 @@ angular.module('planifETS.controllers').controller('PlanningsCtrl',
   // };
 
   $scope.allCourses = {
-    courses : [
-      {title: 'ANG001', id: 1},
-      {title: 'BNG002', id: 2},
-      {title: 'CNG003', id: 3},
-      {title: 'DNG004', id: 4},
-      {title: 'ENG005', id: 5},
-      {title: 'FNG006', id: 6},
-      {title: 'GNG007', id: 7},
-      {title: 'HNG008', id: 8},
-      {title: 'ING009', id: 9},
-      {title: 'JNG010', id: 10},
-      {title: 'KNG011', id: 11},
-      {title: 'LNG012', id: 12},
-      {title: 'MNG013', id: 13},
-      {title: 'NNG014', id: 14},
-      {title: 'ONG015', id: 15}
-    ],
+    courses : [],
     selectedCourse : null
   };
-
-  // Setting the default value for the selector
-  $scope.selectedSemester.value = $scope.semesters[0];
-  $scope.filterBySemester = $scope.semesters[0].semester;
 
   // Load the create / edit dialog from the given template URL
   $ionicModal.fromTemplateUrl('templates/createPlanning.html', function(modal) {
@@ -146,6 +123,12 @@ angular.module('planifETS.controllers').controller('PlanningsCtrl',
   };
 
   $scope.showCreatePlanningDialog = function(action) {
+    $scope.allCourses.courses = CourseService.getAllCourses();
+    $scope.semesters = SemesterService.getAllSemesters();
+
+    $scope.selectedSemester.value = $scope.semesters[0];
+    $scope.filterBySemester = $scope.semesters[0].semester;
+
     $ionicListDelegate.closeOptionButtons();  // this closes swipe option buttons after alert
     $scope.action = action;
 
@@ -169,6 +152,11 @@ angular.module('planifETS.controllers').controller('PlanningsCtrl',
   };
 
   $scope.showEditPlanningItem = function(item) {
+    $scope.allCourses.courses = CourseService.getAllCourses();
+    $scope.semesters = SemesterService.getAllSemesters();
+
+    $scope.selectedSemester.value = $scope.semesters[0];
+    $scope.filterBySemester = $scope.semesters[0].semester;
 
     // Remember edit item to change it later
     $scope.tmpEditItem = item;
