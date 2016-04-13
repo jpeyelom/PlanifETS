@@ -139,9 +139,9 @@ angular.module('planifETS.controllers').controller('PlanningsCtrl',
     }
 
     // Setting current courses in temp planning
-    for (var i = 0; i < currentPlanningCourses.length; i++) {
+    for (var j = 0; j < currentPlanningCourses.length; j++) {
       var itemToAdd = {
-        course:currentPlanningCourses[i].course,
+        course:currentPlanningCourses[j].course,
         status: ''
       };
       $scope.tempEditCourse.push(itemToAdd);
@@ -194,9 +194,9 @@ angular.module('planifETS.controllers').controller('PlanningsCtrl',
     var planningId = plannings.length + 1;
 
     if (tempPlanning.length > 0) {
-      var title = $scope.createName(selectedSemester);
+      var titlePlanning = $scope.createName(selectedSemester);
       var planning = {
-        title: title,
+        title: titlePlanning,
         semester: selectedSemester,
         courses: tempPlanning,
         id: planningId
@@ -221,8 +221,7 @@ angular.module('planifETS.controllers').controller('PlanningsCtrl',
         $scope.plannings.semesterPlanning[i].courses = tempPlanning;
 
         if (plannings[i].semester != selectedSemester) {
-          var title = $scope.createName(selectedSemester);
-          $scope.plannings.semesterPlanning[i].title = title;
+          $scope.plannings.semesterPlanning[i].title = $scope.createName(selectedSemester);
         }
 
         $scope.plannings.semesterPlanning[i].semester = selectedSemester;
@@ -249,7 +248,7 @@ angular.module('planifETS.controllers').controller('PlanningsCtrl',
     }
 
     return title;
-  }
+  };
 
   // An alert dialog
   $scope.showCourseAlert = function(title, template) {
