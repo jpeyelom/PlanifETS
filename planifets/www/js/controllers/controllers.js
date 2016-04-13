@@ -1,1 +1,1 @@
-angular.module('planifETS.controllers', []);
+angular.module('planifETS.controllers', ['backand']);
