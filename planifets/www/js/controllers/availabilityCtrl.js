@@ -59,11 +59,7 @@ angular.module('planifETS.controllers').controller('AvailabilityCtrl',
       courseId = $scope.coursesFiltered[i].id;
       $scope.coursesAvailabilitiesFiltered = [];
 
-      for (var j = 0; j < $scope.allAvailabilities.length; j++) {
-        if (courseId == $scope.allAvailabilities[j].course) {
-          $scope.coursesAvailabilitiesFiltered.push($scope.allAvailabilities[j]);
-        }
-      }
+      $scope.coursesAvailabilitiesFiltered = AvailabilityService.filterCourseAvailabilities(courseId);
 
       for (var k = 0; k < $scope.coursesAvailabilitiesFiltered.length; k++) {
         availabilityId = $scope.coursesAvailabilitiesFiltered[k].availability;
