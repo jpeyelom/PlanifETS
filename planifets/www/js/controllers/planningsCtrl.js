@@ -126,8 +126,10 @@ angular.module('planifETS.controllers').controller('PlanningsCtrl',
     $scope.allCourses.courses = CourseService.getAllCourses();
     $scope.semesters = SemesterService.getAllSemesters();
 
-    $scope.selectedSemester.value = $scope.semesters[0];
-    $scope.filterBySemester = $scope.semesters[0].semester;
+    if(action == 'add'){
+      $scope.selectedSemester.value = $scope.semesters[0];
+      $scope.filterBySemester = $scope.semesters[0].semester;
+    }
 
     $ionicListDelegate.closeOptionButtons();  // this closes swipe option buttons after alert
     $scope.action = action;
@@ -176,7 +178,11 @@ angular.module('planifETS.controllers').controller('PlanningsCtrl',
 
     // Setting current courses in temp planning
     for (var i = 0; i < currentPlanningCourses.length; i++) {
-      $scope.tempEditCourse.push(currentPlanningCourses[i]);
+      var itemToAdd = {
+        course:currentPlanningCourses[i].course,
+        status: ''
+      };
+      $scope.tempEditCourse.push(itemToAdd);
     }
 
     // Setting current courses in temp planning
@@ -293,6 +299,7 @@ angular.module('planifETS.controllers').controller('PlanningsCtrl',
 
   $scope.setPlanningList = function(planning) {
     $scope.setTitle(planning);
+    PlanningService.setCurrentPlanningId(planning.id);
     PlanningService.setCoursesList(planning.courses);
   };
 
