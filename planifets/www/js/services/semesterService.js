@@ -31,14 +31,27 @@ angular.module('planifETS.controllers').factory('SemesterService',[ function() {
   var getSemesterId = function(title) {
     var semesterId = null;
 
-    for(var i = 0; 0 < allSemesters.length; i++) {
-      if(title == allSemesters[i].semester) {
-        semesterId = allSemesters[i].id;
+    for(var j = 0; j < allSemesters.length; j++) {
+      if(title == allSemesters[j].semester) {
+        semesterId = allSemesters[j].id;
         break;
       }
     }
 
     return semesterId;
+  };
+
+  var getSemesterById = function(id) {
+    var semester = null;
+
+    for(var i = 0; i < allSemesters.length; i++) {
+      if(id == allSemesters[i].id) {
+        semester = allSemesters[i].semester;
+        break;
+      }
+    }
+
+    return semester;
   };
 
   return {
@@ -48,6 +61,7 @@ angular.module('planifETS.controllers').factory('SemesterService',[ function() {
     setAllSemesters : setAllSemesters,
     getSemesterId : getSemesterId,
     setCurrentSemester : setCurrentSemester,
-    getCurrentSemester : getCurrentSemester
+    getCurrentSemester : getCurrentSemester,
+    getSemesterById : getSemesterById
   };
 }]);
