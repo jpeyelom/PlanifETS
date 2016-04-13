@@ -47,7 +47,7 @@ angular.module('planifETS.controllers').factory('PlanningService', [ function() 
     getCurrentPlanning: function() {
       var planning = null;
 
-      for(var i = 0; 0 < planningList.length; i++) {
+      for(var i = 0; i < planningList.length; i++) {
         if(currentPlanningId == planningList[i].id) {
           planning = planningList[i];
           break;
