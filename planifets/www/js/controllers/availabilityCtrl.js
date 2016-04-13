@@ -14,12 +14,6 @@ angular.module('planifETS.controllers').controller('AvailabilityCtrl',
   $scope.coursesFiltered = [];
   $scope.coursesAvailabilitiesFiltered = [];
   $scope.programId = null;
-  $scope.availability = [
-    {title: 'D', id: 1},
-    {title: 'N', id: 2},
-    {title: 'DN', id: 3}
-  ];
-
 
   $scope.$on('$ionicView.beforeEnter', function() {
     // Start showing the progress
@@ -64,15 +58,7 @@ angular.module('planifETS.controllers').controller('AvailabilityCtrl',
       for (var k = 0; k < $scope.coursesAvailabilitiesFiltered.length; k++) {
         availabilityId = $scope.coursesAvailabilitiesFiltered[k].availability;
         semesterId = $scope.coursesAvailabilitiesFiltered[k].semester;
-
-        for (var l = 0; l < $scope.availability.length; l++) {
-          availabilityValue = "";
-          if (availabilityId == $scope.availability[l].id) {
-            availabilityValue = $scope.availability[l].title;
-            break;
-          }
-        }
-
+        availabilityValue = AvailabilityService.getAvailabilitiesById(availabilityId);
         availability = { semester: semesterId, availabilityValue: availabilityValue };
         availabilities.push(availability);
       }
