@@ -13,11 +13,6 @@ angular.module('planifETS.controllers').controller('PlanningCtrl',
     $scope.currentSemesterId = null;
     $scope.coursesAvailabilitiesFiltered = [];
     $scope.availabilitiesBySemesters = [];
-    $scope.availability = [
-      {title: 'D', id: 1},
-      {title: 'N', id: 2},
-      {title: 'DN', id: 3}
-    ];
 
     $scope.verifyAvailabilities = function() {
       // Start showing the progress
@@ -61,33 +56,47 @@ angular.module('planifETS.controllers').controller('PlanningCtrl',
     };
 
     $scope.showAvailabilities = function(courses) {
-      var availabilities = [];
-      var item = {
-        value: "",
-        semester: ""
-      };
-      var courseId = CourseService.getCourseId(courses.course);
-      var coursesAvailabilitiesFiltered = AvailabilityService.filterCourseAvailabilities(courseId);
+      if (courses.status != "") {
+        var availabilities = [];
+        var courseId = CourseService.getCourseId(courses.course);
+        var coursesAvailabilitiesFiltered = AvailabilityService.filterCourseAvailabilities(courseId);
+        $scope.currentSemester = SemesterService.getCurrentSemester();
 
-      for (var k = 0; k < coursesAvailabilitiesFiltered.length; k++) {
-        if ($scope.currentSemesterId != coursesAvailabilitiesFiltered[k].semester) {
-          if (coursesAvailabilitiesFiltered[k].availability == 1 ||
-            coursesAvailabilitiesFiltered[k].availability == 2 ||
-            coursesAvailabilitiesFiltered[k].availability == 3) {
-              item.value = coursesAvailabilitiesFiltered[k].availability;
-              item.semester = coursesAvailabilitiesFiltered[k].semester;
+        for (var k = 0; k < coursesAvailabilitiesFiltered.length; k++) {
+          if ($scope.currentSemesterId != coursesAvailabilitiesFiltered[k].semester) {
+            if (coursesAvailabilitiesFiltered[k].availability != "") {
+              var item = {
+                value: null,
+                semester: null
+              };
+              item.value = AvailabilityService.getAvailabilitiesById(coursesAvailabilitiesFiltered[k].availability);
+              item.semester = SemesterService.getSemesterById(coursesAvailabilitiesFiltered[k].semester);
               availabilities.push(item);
+            }
           }
         }
-      }
 
-      $scope.availabilitiesBySemesters = availabilities;
+        $scope.availabilitiesBySemesters = availabilities;
 
-      if(courses.status == 'unavailable'){
-        $scope.showAvailabilityAlert('Course not available for ' + $scope.currentSemester,
-          courses.course + ' is only available for the current ' +
-          'semesters : <br/><br/> W16(' + 'D' + ')  -  S16(' + 'N' + ')  -  W17(' + 'D' + ')  -  S17(' + 'N' + ')');
+        var text = $scope.constructText(availabilities);
+
+        if(courses.status == 'unavailable'){
+          $scope.showAvailabilityAlert('Course not available for ' + $scope.currentSemester,
+            courses.course + ' is only available for the current ' +
+            'semesters : <br/><br/> ' + text);
+        }
       }
+    };
+
+    $scope.constructText = function(arrayAvailabilities) {
+      var text = "";
+      for (var l = 0; l < arrayAvailabilities.length; l++) {
+        text = text + arrayAvailabilities[l].semester +'(' + arrayAvailabilities[l].value + ') '
+        if (l < arrayAvailabilities.length - 1) {
+          text = text + " - "
+        }
+      }
+      return text;
     };
 
     $scope.$on('$ionicView.beforeEnter', function() {
