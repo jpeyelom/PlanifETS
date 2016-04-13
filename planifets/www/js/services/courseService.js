@@ -1,6 +1,7 @@
-angular.module('planifETS.controllers').factory('CourseService',[ function() {
+angular.module('planifETS.controllers').factory('CourseService',[function() {
 
   var selectedCourse = null;
+  var allCourses = [];
 
   var setSelectedCourse = function(course) {
     selectedCourse = course;
@@ -10,8 +11,18 @@ angular.module('planifETS.controllers').factory('CourseService',[ function() {
     return selectedCourse;
   };
 
+  var getAllCourses = function() {
+    return allCourses;
+  }
+
+  var setAllCourses = function(array) {
+    allCourses = array;
+  }
+
   return {
     getSelectedCourse : getSelectedCourse,
-    setSelectedCourse : setSelectedCourse
+    setSelectedCourse : setSelectedCourse,
+    getAllCourses : getAllCourses,
+    setAllCourses : setAllCourses
   };
 }])
