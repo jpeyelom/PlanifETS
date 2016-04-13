@@ -8,10 +8,11 @@
         Courses
         <label class="icon" style="font-size: 16px; font-weight: 600;">Available</label>
       </div>
-      <div class="item item-icon-right" ng-repeat="courses in planningCourses | orderBy:'-course'">
+      <div class="item item-icon-right" ng-repeat="courses in planningCourses | orderBy:'-course'"
+           ng-click="showAvailabilities(courses)">
         {{courses.course}}
-        <i ng-show="showValid" class="icon ion-checkmark-circled" style="color: limegreen;"></i>
-        <i ng-show="showInvalid" class="icon ion-close-circled" style="color: red;"></i>
+        <i ng-show="courses.status == 'available'" class="icon ion-checkmark-circled" style="color: limegreen;"></i>
+        <i ng-show="courses.status == 'unavailable'" class="icon ion-close-circled" style="color: red;"></i>
       </div>
     </div>
 
