@@ -13,16 +13,30 @@ angular.module('planifETS.controllers').factory('CourseService',[function() {
 
   var getAllCourses = function() {
     return allCourses;
-  }
+  };
 
   var setAllCourses = function(array) {
     allCourses = array;
-  }
+  };
+
+  var getCourseId = function(title) {
+    var courseId = null;
+
+    for(var i = 0; 0 < allCourses.length; i++) {
+      if(title == allCourses[i].title) {
+        courseId = allCourses[i].id;
+        break;
+      }
+    }
+
+    return courseId;
+  };
 
   return {
     getSelectedCourse : getSelectedCourse,
     setSelectedCourse : setSelectedCourse,
     getAllCourses : getAllCourses,
-    setAllCourses : setAllCourses
+    setAllCourses : setAllCourses,
+    getCourseId : getCourseId
   };
-}])
+}]);
