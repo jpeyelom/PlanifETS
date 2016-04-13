@@ -25,43 +25,6 @@ angular.module('planifETS.controllers').controller('PlanningsCtrl',
   $scope.selectedSemester.value = null;
   $scope.filterBySemester = null;
 
-  // $scope.plannings = {
-  //   semesterPlanning : [
-  //     { title: 'Winter 2016',
-  //       semester: 'W16',
-  //       courses: [
-  //         { course: 'ING150' },
-  //         { course: 'MAT450' }
-  //       ],
-  //       id: 1
-  //     },
-  //     { title: 'Summer 2016',
-  //       semester: 'S16',
-  //       courses: [
-  //         { course: 'TIN501' },
-  //         { course: 'GTI210' }
-  //       ],
-  //       id: 2
-  //     },
-  //     { title: 'Winter 2017',
-  //       semester: 'W17',
-  //       courses: [
-  //         { course: 'GTI310' },
-  //         { course: 'MAT560' }
-  //       ],
-  //       id: 3
-  //     },
-  //     { title: 'Summer 2017',
-  //       semester: 'S17',
-  //       courses: [
-  //         { course: 'ING160' },
-  //         { course: 'MAD123' }
-  //       ],
-  //       id: 4
-  //     },
-  //   ]
-  // };
-
   $scope.allCourses = {
     courses : [],
     selectedCourse : null
@@ -167,7 +130,6 @@ angular.module('planifETS.controllers').controller('PlanningsCtrl',
     var semester = $scope.semesters;
     var currentPlanningCourses = item.courses;
     var currentPlanningSemester = item.semester;
-    var course = {};
 
     // Setting current semester in dialog
     for (var i = 0; i < semester.length; i++) {
