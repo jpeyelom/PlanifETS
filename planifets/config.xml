@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <widget id="com.ionicframework.planifets274858" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>planifets</name>
+  <name>planifÉTS</name>
   <description>
-        An Ionic Framework and Cordova project.
-    </description>
-  <author email="you@example.com" href="http://example.com.com/">
-      Your Name Here
+	A mobile application enabling students to facilitate their planning path. They will be able to validate the courses chosen by the planning list providing availability for the next 5 sessions.
+	</description>
+  <author email="jeanphilippe.eyelom@gmail.com" href="https://github.com/jpeyelom/PlanifETS">
+      Jean-Philippe Eyelom
     </author>
   <content src="index.html"/>
   <access origin="*"/>
