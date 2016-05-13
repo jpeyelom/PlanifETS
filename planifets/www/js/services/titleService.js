@@ -14,4 +14,4 @@ angular.module('planifETS.controllers').factory('TitleService',[function() {
     getTitle : getTitle,
     setTitle : setTitle
   };
-}])
+}]);

@@ -47,4 +47,4 @@ angular.module('planifETS.controllers').factory('AvailabilityService', [function
     filterCourseAvailabilities : filterCourseAvailabilities,
     getAvailabilitiesById : getAvailabilitiesById
   };
-}])
+}]);
