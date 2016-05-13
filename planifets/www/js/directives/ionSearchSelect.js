@@ -35,7 +35,7 @@ angular.module('planifETS.controllers').directive('ionSearchSelect',['$ionicModa
         if(!!$scope.searchSelect.keyProperty && !!$scope.searchSelect.valueProperty){
           for (var i = 0; i < $scope.options.length; i++) {
             var currentOption = $scope.options[i];
-            if(currentOption[$scope.searchSelect.keyProperty] == $scope.searchSelect.option){
+            if(currentOption[$scope.searchSelect.keyProperty] === $scope.searchSelect.option){
               $scope.optionSelected = currentOption;
               CourseService.setSelectedCourse(currentOption)
               break;
