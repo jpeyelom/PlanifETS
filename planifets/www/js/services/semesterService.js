@@ -32,7 +32,7 @@ angular.module('planifETS.controllers').factory('SemesterService',[ function() {
     var semesterId = null;
 
     for(var j = 0; j < allSemesters.length; j++) {
-      if(title == allSemesters[j].semester) {
+      if(title === allSemesters[j].semester) {
         semesterId = allSemesters[j].id;
         break;
       }
@@ -45,7 +45,7 @@ angular.module('planifETS.controllers').factory('SemesterService',[ function() {
     var semester = null;
 
     for(var i = 0; i < allSemesters.length; i++) {
-      if(id == allSemesters[i].id) {
+      if(id === allSemesters[i].id) {
         semester = allSemesters[i].semester;
         break;
       }

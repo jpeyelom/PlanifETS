@@ -5,12 +5,14 @@ angular.module('planifETS.controllers').factory('PlanningService', [ function() 
   var currentPlanningId = localStorage.getItem("currentPlanningId");;
   var planningListStore = localStorage.getItem("planningList");
   var coursesListStore = localStorage.getItem("coursesList");
-  if (planningListStore != null && planningListStore != '' && angular.isArray(angular.fromJson(planningListStore))) {
+
+  if (planningListStore !== null && planningListStore != '' && angular.isArray(angular.fromJson(planningListStore))) {
     planningList = angular.fromJson(planningListStore);
   }
-  if (coursesListStore != null && coursesListStore != '' && angular.isArray(angular.fromJson(coursesListStore))) {
+  if (coursesListStore !== null && coursesListStore != '' && angular.isArray(angular.fromJson(coursesListStore))) {
     coursesList = angular.fromJson(coursesListStore);
   }
+
   var listSrv = {
     setPlanningList: function(newList) {
       planningList = newList;
@@ -18,7 +20,7 @@ angular.module('planifETS.controllers').factory('PlanningService', [ function() 
       return true;
     },
     getPlanningList: function() {
-      if (planningList != null) {
+      if (planningList !== null) {
         return planningList;
       } else {
         return [];
@@ -30,7 +32,7 @@ angular.module('planifETS.controllers').factory('PlanningService', [ function() 
       return true;
     },
     getCoursesList: function() {
-      if (coursesList != null) {
+      if (coursesList !== null) {
         return coursesList;
       } else {
         return [];
@@ -48,7 +50,7 @@ angular.module('planifETS.controllers').factory('PlanningService', [ function() 
       var planning = null;
 
       for(var i = 0; i < planningList.length; i++) {
-        if(currentPlanningId == planningList[i].id) {
+        if(currentPlanningId === planningList[i].id) {
           planning = planningList[i];
           break;
         }

@@ -23,7 +23,7 @@ angular.module('planifETS.controllers').factory('CourseService',[function() {
     var courseId = null;
 
     for(var i = 0; i < allCourses.length; i++) {
-      if(title == allCourses[i].title) {
+      if(title === allCourses[i].title) {
         courseId = allCourses[i].id;
         break;
       }

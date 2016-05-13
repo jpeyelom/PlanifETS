@@ -20,7 +20,7 @@ angular.module('planifETS.controllers').factory('AvailabilityService', [function
     filteredAvailabilities = [];
 
     for (var j = 0; j < allAvailabilities.length; j++) {
-      if (courseId == allAvailabilities[j].course) {
+      if (courseId.toString() === allAvailabilities[j].course) {
         filteredAvailabilities.push(allAvailabilities[j]);
       }
     }
@@ -32,7 +32,7 @@ angular.module('planifETS.controllers').factory('AvailabilityService', [function
     var availability = null;
 
     for(var i = 0; i < availabilityValue.length; i++) {
-      if(id == availabilityValue[i].id) {
+      if(id === availabilityValue[i].id) {
         availability = availabilityValue[i].value;
         break;
       }
