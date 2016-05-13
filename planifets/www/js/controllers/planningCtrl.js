@@ -43,10 +43,10 @@ angular.module('planifETS.controllers').controller('PlanningCtrl',
 
     $scope.isCourseAvailable = function(currentSemesterId, coursesAvailabilitiesFiltered) {
       for (var j = 0; j < coursesAvailabilitiesFiltered.length; j++) {
-        if (currentSemesterId == coursesAvailabilitiesFiltered[j].semester) {
-          if (coursesAvailabilitiesFiltered[j].availability == 1 ||
-            coursesAvailabilitiesFiltered[j].availability == 2 ||
-            coursesAvailabilitiesFiltered[j].availability == 3) {
+        if (currentSemesterId.toString() === coursesAvailabilitiesFiltered[j].semester) {
+          if (coursesAvailabilitiesFiltered[j].availability === "1" ||
+            coursesAvailabilitiesFiltered[j].availability === "2" ||
+            coursesAvailabilitiesFiltered[j].availability === "3") {
               return 'available';
           } else {
               return 'unavailable';
@@ -56,21 +56,21 @@ angular.module('planifETS.controllers').controller('PlanningCtrl',
     };
 
     $scope.showAvailabilities = function(courses) {
-      if (courses.status != "") {
+      if (courses.status !== "") {
         var availabilities = [];
         var courseId = CourseService.getCourseId(courses.course);
         var coursesAvailabilitiesFiltered = AvailabilityService.filterCourseAvailabilities(courseId);
         $scope.currentSemester = SemesterService.getCurrentSemester();
 
         for (var k = 0; k < coursesAvailabilitiesFiltered.length; k++) {
-          if ($scope.currentSemesterId != coursesAvailabilitiesFiltered[k].semester) {
-            if (coursesAvailabilitiesFiltered[k].availability != "") {
+          if ($scope.currentSemesterId && $scope.currentSemesterId.toString() !== coursesAvailabilitiesFiltered[k].semester) {
+            if (coursesAvailabilitiesFiltered[k].availability !== "") {
               var item = {
                 value: null,
                 semester: null
               };
-              item.value = AvailabilityService.getAvailabilitiesById(coursesAvailabilitiesFiltered[k].availability);
-              item.semester = SemesterService.getSemesterById(coursesAvailabilitiesFiltered[k].semester);
+              item.value = AvailabilityService.getAvailabilitiesById(parseInt(coursesAvailabilitiesFiltered[k].availability));
+              item.semester = SemesterService.getSemesterById(parseInt(coursesAvailabilitiesFiltered[k].semester));
               availabilities.push(item);
             }
           }
@@ -80,7 +80,7 @@ angular.module('planifETS.controllers').controller('PlanningCtrl',
 
         var text = $scope.constructText(availabilities);
 
-        if(courses.status == 'unavailable'){
+        if(courses.status === 'unavailable'){
           $scope.showAvailabilityAlert('Course not available for ' + $scope.currentSemester,
             courses.course + ' is only available for the current ' +
             'semesters : <br/><br/> ' + text);

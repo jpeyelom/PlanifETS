@@ -37,13 +37,13 @@ angular.module('planifETS.controllers').controller('AvailabilityCtrl',
     $scope.allAvailabilities = AvailabilityService.getAllAvailabilities();
 
     for (var p = 0; p < $scope.programs.length; p++) {
-      if ($scope.selectedProgram == $scope.programs[p].title) {
+      if ($scope.selectedProgram === $scope.programs[p].title) {
         $scope.programId = $scope.programs[p].id;
       }
     }
 
     for (var o = 0; o < $scope.allCourses.length; o++) {
-      if ($scope.programId == $scope.allCourses[o].program) {
+      if ($scope.programId.toString() === $scope.allCourses[o].program) {
         $scope.coursesFiltered.push($scope.allCourses[o]);
       }
     }
@@ -58,7 +58,7 @@ angular.module('planifETS.controllers').controller('AvailabilityCtrl',
       for (var k = 0; k < $scope.coursesAvailabilitiesFiltered.length; k++) {
         availabilityId = $scope.coursesAvailabilitiesFiltered[k].availability;
         semesterId = $scope.coursesAvailabilitiesFiltered[k].semester;
-        availabilityValue = AvailabilityService.getAvailabilitiesById(availabilityId);
+        availabilityValue = AvailabilityService.getAvailabilitiesById(parseInt(availabilityId));
         availability = { semester: semesterId, availabilityValue: availabilityValue };
         availabilities.push(availability);
       }

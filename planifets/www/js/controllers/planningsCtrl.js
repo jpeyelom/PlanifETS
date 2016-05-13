@@ -61,10 +61,10 @@ angular.module('planifETS.controllers').controller('PlanningsCtrl',
   };
 
   $scope.onItemDelete = function(planning, form) {
-    if (form == 'view'){
+    if (form === 'view'){
       $scope.plannings.semesterPlanning.splice($scope.plannings.semesterPlanning.indexOf(planning), 1);
       PlanningService.setPlanningList($scope.plannings.semesterPlanning);
-    } else if (form == 'dialog') {
+    } else if (form === 'dialog') {
       $scope.tempPlanning.selectedCourses.splice($scope.tempPlanning.selectedCourses.indexOf(planning), 1);
     }
   };
@@ -89,7 +89,7 @@ angular.module('planifETS.controllers').controller('PlanningsCtrl',
     $scope.allCourses.courses = CourseService.getAllCourses();
     $scope.semesters = SemesterService.getAllSemesters();
 
-    if(action == 'add'){
+    if(action === 'add'){
       $scope.selectedSemester.value = $scope.semesters[0];
       $scope.filterBySemester = $scope.semesters[0].semester;
     }
@@ -97,7 +97,7 @@ angular.module('planifETS.controllers').controller('PlanningsCtrl',
     $ionicListDelegate.closeOptionButtons();  // this closes swipe option buttons after alert
     $scope.action = action;
 
-    if(action == 'add') {
+    if(action === 'add') {
       $scope.navTitle ="Create Planning";
     }
 
@@ -133,7 +133,7 @@ angular.module('planifETS.controllers').controller('PlanningsCtrl',
 
     // Setting current semester in dialog
     for (var i = 0; i < semester.length; i++) {
-      if (semester[i].semester == currentPlanningSemester){
+      if (semester[i].semester === currentPlanningSemester){
         $scope.selectedSemester.value = semester[i];
       }
     }
@@ -173,7 +173,7 @@ angular.module('planifETS.controllers').controller('PlanningsCtrl',
     var planning = $scope.tempPlanning.selectedCourses;
 
     for (var i = 0; i < planning.length; i++) {
-      if (planning[i].course == item.course){
+      if (planning[i].course === item.course){
         courseExist = true;
       }
     }
@@ -217,10 +217,10 @@ angular.module('planifETS.controllers').controller('PlanningsCtrl',
     var selectedSemester = $scope.selectedSemester.value.semester;
 
     for (var i = 0; i < plannings.length; i++) {
-      if (plannings[i].id == $scope.tmpEditItem.id) {
+      if (plannings[i].id === $scope.tmpEditItem.id) {
         $scope.plannings.semesterPlanning[i].courses = tempPlanning;
 
-        if (plannings[i].semester != selectedSemester) {
+        if (plannings[i].semester !== selectedSemester) {
           $scope.plannings.semesterPlanning[i].title = $scope.createName(selectedSemester);
         }
 
@@ -239,11 +239,11 @@ angular.module('planifETS.controllers').controller('PlanningsCtrl',
     var year = selectedSemester.slice(1, 3);
     var title = "";
 
-    if(summer != -1) {
+    if(summer !== -1) {
       title = "Summer 20" + year;
-    } else if (autumn != -1) {
+    } else if (autumn !== -1) {
       title = "Autumn 20" + year;
-    } else if (winter != -1) {
+    } else if (winter !== -1) {
       title = "Winter 20" + year;
     }
 
